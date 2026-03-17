@@ -11,5 +11,5 @@ def setup_logger():
         format="%(asctime)s - %(levelname)s - %(message)s"
     )
 
-def log_error(error):
-    logging.error(str(error))
+def log_error(message):
+    logging.error(message)
