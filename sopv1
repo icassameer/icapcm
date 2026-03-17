@@ -1,0 +1,242 @@
+# 📘 ICAPCM – Standard Operating Procedure (SOP)
+
+## 📌 Purpose
+
+This SOP defines the standard workflow for operating the ICAPCM Inventory Management System efficiently, ensuring accurate handling of large-scale inventory data, secure usage, and consistent business operations.
+
+---
+
+## 🎯 Scope
+
+This SOP applies to:
+
+* Store managers
+* Inventory operators
+* Account/admin users
+* Business owners using ICAPCM
+
+---
+
+## 🧑‍💼 User Roles & Responsibilities
+
+### 🔹 Admin
+
+* Manage users and permissions
+* Configure system settings
+* Monitor reports and analytics
+* Perform backups and restores
+
+### 🔹 Store Keeper / Operator
+
+* Add/update products
+* Manage stock (IN/OUT/Adjustment)
+* Process sales and invoices
+* Maintain data accuracy
+
+---
+
+## ⚙️ System Setup Procedure
+
+1. Install the application
+2. Launch the application (`main.py` or installed EXE)
+3. Login using admin credentials
+4. Configure:
+
+   * Company details
+   * GST settings
+   * Categories & suppliers
+
+---
+
+## 📦 Inventory Management SOP
+
+### ➤ Adding New Products
+
+* Navigate to **Products**
+* Enter:
+
+  * Product name
+  * SKU (auto/manual)
+  * Category & supplier
+  * Cost price & selling price
+  * Barcode (if available)
+* Save product
+
+---
+
+### ➤ Stock Entry (IN)
+
+* Go to **Inventory → Stock IN**
+* Select product
+* Enter quantity and purchase details
+* Confirm entry
+
+---
+
+### ➤ Stock Issue (OUT)
+
+* Go to **Inventory → Stock OUT**
+* Select product
+* Enter quantity issued
+* Confirm transaction
+
+---
+
+### ➤ Stock Adjustment
+
+* Used for:
+
+  * Damage
+  * Manual correction
+* Always record reason for audit
+
+---
+
+### ➤ Large Inventory Handling Guidelines
+
+* Use categories to organize products
+* Avoid duplicate SKUs
+* Perform periodic stock audits
+* Use search/filter instead of scrolling
+* Maintain consistent naming conventions
+
+---
+
+## 💰 Sales & Billing SOP
+
+### ➤ Creating Invoice
+
+1. Open **Sales Module**
+2. Add customer details
+3. Add products (auto calculation)
+4. Apply:
+
+   * Discount
+   * GST
+5. Select payment method
+6. Generate invoice (PDF)
+
+---
+
+### ➤ Best Practices
+
+* Verify stock before billing
+* Avoid manual price overrides unless required
+* Always save invoice records
+
+---
+
+## 📊 Reporting SOP
+
+* Access **Reports Module**
+* Generate:
+
+  * Sales report
+  * Inventory report
+  * Low stock report
+* Export formats:
+
+  * Excel / CSV / PDF
+
+---
+
+## 🗄️ Backup & Restore SOP
+
+### ➤ Backup
+
+* Navigate to **Backup**
+* Perform daily or weekly backup
+* Store backup externally (USB/cloud)
+
+### ➤ Restore
+
+* Use only verified backup files
+* Ensure no active transactions during restore
+
+---
+
+## 🔐 Data Security SOP
+
+* Do not share admin credentials
+* Change default passwords immediately
+* Assign roles properly
+* Perform regular backups
+* Restrict unauthorized access
+
+---
+
+## ⚠️ Error Handling SOP
+
+* If application crashes:
+
+  * Restart application
+  * Check last transaction
+* Maintain manual record (optional)
+* Report issue to developer/support
+
+---
+
+## 🚀 Performance SOP (Large Data Handling)
+
+To ensure smooth performance with large inventory:
+
+* Keep database size optimized
+* Archive old data periodically
+* Avoid running multiple instances
+* Use system with:
+
+  * Minimum 8GB RAM
+  * SSD storage recommended
+
+---
+
+## 🔄 Maintenance SOP
+
+* Weekly:
+
+  * Backup data
+  * Review low stock
+* Monthly:
+
+  * Audit inventory
+  * Clean unused records
+* Quarterly:
+
+  * Update application (if available)
+
+---
+
+## 📈 Scalability Guidelines
+
+* Suitable for:
+
+  * Retail shops
+  * Warehouses
+  * SMEs
+* For larger scale:
+
+  * Consider multi-user upgrade
+  * Use structured data practices
+
+---
+
+## 📌 Compliance Notes
+
+* Ensure GST settings are correct
+* Maintain invoice records for audit
+* Follow local taxation rules
+
+---
+
+## 👤 Support
+
+For issues or upgrades, contact:
+
+* Developer: Sameer Bagwan
+* GitHub: https://github.com/icassameer
+
+---
+
+## ✅ Conclusion
+
+ICAPCM is capable of handling large-scale inventory data efficiently when used with proper operational discipline, structured workflows, and regular maintenance.
