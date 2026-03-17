@@ -2,21 +2,25 @@
 # ============================================================
 #  ICA PMS — Main Entry Point
 # ============================================================
+
 from utils.logger import setup_logger, log_error
 setup_logger()
 
 import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from utils.license_manager import validate_license, get_machine_id
+from tkinter import messagebox
 
 def handle_exception(exc_type, exc_value, exc_traceback):
     log_error(f"[Main/unhandled_exception] {exc_type.__name__} | error={exc_value}")
 
 sys.excepthook = handle_exception
 
-import sys, os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
-# ── Silence CustomTkinter focus/animation errors on Windows ──
-import tkinter as tk, tkinter.ttk as ttk
+# ── Safer Tk / CustomTkinter handling on Windows ──
+import tkinter as tk
+import tkinter.ttk as ttk
 
 _orig_focus_set = tk.BaseWidget.focus_set
 def _safe_focus_set(self, *a, **kw):
@@ -44,7 +48,6 @@ def _safe_ttk_focus(self, item=None):
         return ''
 ttk.Treeview.focus = _safe_ttk_focus
 
-# Silence ALL background Tk callback errors
 def tk_exception_logger(self, exc, val, tb):
     exc_name = exc.__name__ if hasattr(exc, "__name__") else str(exc)
     log_error(f"[Tkinter/callback] callback crashed | exception={exc_name} | error={val}")
@@ -61,20 +64,29 @@ from auth.login_window import LoginWindow
 
 
 def main():
+    is_valid, message = validate_license()
+    if not is_valid:
+        machine_id = get_machine_id()
+        messagebox.showerror(
+            "License Error",
+            f"{message}\n\nMachine ID: {machine_id}\n\nSend this Machine ID to vendor for activation."
+        )
+        return
+
     db = DatabaseManager()
 
     def on_login_success(user):
         from views.main_window import MainWindow
         app = MainWindow(db, user)
-        login.report_callback_exception = lambda e, v, tb: log_error(
-    f"[LoginWindow/callback] UI callback failed | exception={e.__name__ if hasattr(e, '__name__') else e} | error={v}"
-)
+        app.report_callback_exception = lambda e, v, tb: log_error(
+            f"[MainWindow/callback] UI callback failed | exception={e.__name__ if hasattr(e, '__name__') else e} | error={v}"
+        )
         app.mainloop()
 
     login = LoginWindow(db, on_login_success)
     login.report_callback_exception = lambda e, v, tb: log_error(
-    f"[LoginWindow/callback] UI callback failed | exception={e.__name__ if hasattr(e, '__name__') else e} | error={v}"
-)
+        f"[LoginWindow/callback] UI callback failed | exception={e.__name__ if hasattr(e, '__name__') else e} | error={v}"
+    )
     login.mainloop()
 
 
